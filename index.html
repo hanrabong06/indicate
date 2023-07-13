@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>상태를 표시하는 웹페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        p {
+            color: #666;
+        }
+        
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .checkbox-container {
+            margin-bottom: 10px;
+        }
+        
+        .search-container {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .search-button {
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .status {
+            margin-top: 10px;
+            color: #666;
+        }
+    </style>
+    <script>
+        function toggleButton() {
+            var button = document.getElementById('myButton');
+            var status = document.getElementById('buttonStatus');
+            
+            if (button.classList.contains('active')) {
+                button.classList.remove('active');
+                status.textContent = '버튼이 비활성화되었습니다.';
+            } else {
+                button.classList.add('active');
+                status.textContent = '버튼이 활성화되었습니다!';
+            }
+        }
+        
+        function toggleCheckbox(checkboxId) {
+            var checkbox = document.getElementById(checkboxId);
+            var status = document.getElementById(checkboxId + 'Status');
+            
+            if (checkbox.checked) {
+                status.textContent = '체크박스가 선택되었습니다!';
+            } else {
+                status.textContent = '체크박스가 해제되었습니다.';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>상태를 표시하는 웹페이지</h1>
+        <p>버튼과 체크박스를 눌렀을 때 상태를 표시합니다.</p>
+        
+        <button class="button" id="myButton" onclick="toggleButton()">버튼</button>
+        <p class="status" id="buttonStatus"></p>
+        
+        <div class="checkbox-container">
+            <input type="checkbox" id="checkbox1" onclick="toggleCheckbox('checkbox1')">
+            <label for="checkbox1">체크박스 1</label>
+            <p class="status" id="checkbox1Status"></p>
+        </div>
+        
+        <div class="checkbox-container">
+            <input type="checkbox" id="checkbox2" onclick="toggleCheckbox('checkbox2')">
+            <label for="checkbox2">체크박스 2</label>
+            <p class="status" id="checkbox2Status"></p>
+        </div>
+    </div>
+</body>
+</html>
